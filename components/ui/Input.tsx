@@ -12,6 +12,8 @@ interface InputProps {
   keyboardType?: 'default' | 'email-address' | 'numeric';
   error?: string;
   autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
+  onSubmitEditing?: () => void;
+  returnKeyType?: 'done' | 'go' | 'next' | 'search' | 'send';
 }
 
 export default function Input({
@@ -23,6 +25,8 @@ export default function Input({
   keyboardType = 'default',
   error,
   autoCapitalize = 'none',
+  onSubmitEditing,
+  returnKeyType,
 }: InputProps) {
   return (
     <View style={styles.container}>
@@ -36,6 +40,8 @@ export default function Input({
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
+        onSubmitEditing={onSubmitEditing}
+        returnKeyType={returnKeyType}
       />
       {error && <Text style={styles.error}>{error}</Text>}
     </View>

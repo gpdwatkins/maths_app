@@ -1,11 +1,11 @@
 // Email authentication form
 
 import { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import { validateEmail } from '@/utils/helpers';
-import { SPACING } from '@/utils/constants';
+import { SPACING, COLORS, TYPOGRAPHY, FONTS } from '@/utils/constants';
 
 interface EmailAuthFormProps {
   mode: 'login' | 'register';
@@ -30,7 +30,7 @@ export default function EmailAuthForm({ mode, onSubmit }: EmailAuthFormProps) {
 
     if (!password) {
       newErrors.password = 'Password is required';
-    } else if (password.length < 6) {
+    } else if (mode === 'register' && password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters';
     }
 
@@ -83,8 +83,10 @@ export default function EmailAuthForm({ mode, onSubmit }: EmailAuthFormProps) {
         placeholder="Enter your password"
         secureTextEntry
         error={errors.password}
+        onSubmitEditing={handleSubmit}
+        returnKeyType="go"
       />
-      {errors.submit && <Input value="" onChangeText={() => {}} error={errors.submit} />}
+      {errors.submit && <Text style={styles.submitError}>{errors.submit}</Text>}
       <Button
         title={mode === 'login' ? 'Sign In' : 'Create Account'}
         onPress={handleSubmit}
@@ -99,5 +101,12 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     paddingHorizontal: SPACING.lg,
+  },
+  submitError: {
+    fontSize: TYPOGRAPHY.small,
+    fontFamily: FONTS.regular,
+    color: COLORS.error,
+    marginBottom: SPACING.md,
+    textAlign: 'center',
   },
 });

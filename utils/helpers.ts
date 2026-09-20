@@ -17,7 +17,8 @@ export const formatDate = (dateString: string): string => {
 };
 
 export const validateEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Rejects leading/trailing dots, spaces, and multiple @
+  const emailRegex = /^[a-zA-Z0-9][a-zA-Z0-9._+-]*@[a-zA-Z0-9][a-zA-Z0-9.-]*\.[a-zA-Z]{2,}$/;
   return emailRegex.test(email);
 };
 

@@ -3,6 +3,18 @@
 import { supabase } from './supabase';
 import { User, LoginCredentials, RegisterCredentials, OAuthProvider } from '@/types/auth.types';
 
+// "Failed to fetch" is the raw browser error thrown when a request never reaches
+// the server (offline, DNS failure, unreachable/paused Supabase project, CORS block).
+// Replace it with a message that points at the actual problem instead of the credentials.
+function toFriendlyAuthError(error: Error): Error {
+  if (error.message === 'Failed to fetch') {
+    return new Error(
+      'Could not reach the server. Check your internet connection, or the Supabase project may be unavailable.'
+    );
+  }
+  return error;
+}
+
 // Helper to fetch user profile from users table
 async function fetchUserProfile(authUserId: string, authEmail: string, authCreatedAt: string): Promise<User> {
   const { data: profile, error } = await supabase
@@ -77,7 +89,7 @@ export const authService = {
   async signInWithEmail(credentials: LoginCredentials): Promise<User> {
     const { data, error } = await supabase.auth.signInWithPassword(credentials);
 
-    if (error) throw error;
+    if (error) throw toFriendlyAuthError(error);
 
     return fetchUserProfile(data.user!.id, data.user!.email!, data.user!.created_at);
   },
@@ -89,7 +101,7 @@ export const authService = {
       password: credentials.password,
     });
 
-    if (error) throw error;
+    if (error) throw toFriendlyAuthError(error);
 
     const authUser = data.user!;
 
