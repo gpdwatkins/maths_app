@@ -1,0 +1,969 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshots: UI Components Button matches snapshot for danger variant 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#EF476F",
+      "borderRadius": 8,
+      "justifyContent": "center",
+      "minHeight": 48,
+      "opacity": 1,
+      "paddingHorizontal": 24,
+      "paddingVertical": 16,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "fontFamily": "InterTight_600SemiBold",
+          "fontSize": 16,
+        },
+        {
+          "color": "#FFFFFF",
+        },
+      ]
+    }
+  >
+    Danger Button
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components Button matches snapshot for disabled state 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": true,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#457B9D",
+      "borderRadius": 8,
+      "justifyContent": "center",
+      "minHeight": 48,
+      "opacity": 0.5,
+      "paddingHorizontal": 24,
+      "paddingVertical": 16,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "fontFamily": "InterTight_600SemiBold",
+          "fontSize": 16,
+        },
+        {
+          "color": "#FFFFFF",
+        },
+      ]
+    }
+  >
+    Disabled Button
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components Button matches snapshot for full width 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#457B9D",
+      "borderRadius": 8,
+      "justifyContent": "center",
+      "minHeight": 48,
+      "opacity": 1,
+      "paddingHorizontal": 24,
+      "paddingVertical": 16,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "fontFamily": "InterTight_600SemiBold",
+          "fontSize": 16,
+        },
+        {
+          "color": "#FFFFFF",
+        },
+      ]
+    }
+  >
+    Full Width Button
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components Button matches snapshot for loading state 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": true,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#457B9D",
+      "borderRadius": 8,
+      "justifyContent": "center",
+      "minHeight": 48,
+      "opacity": 1,
+      "paddingHorizontal": 24,
+      "paddingVertical": 16,
+    }
+  }
+>
+  <ActivityIndicator
+    color="#FFFFFF"
+  />
+</View>
+`;
+
+exports[`Snapshots: UI Components Button matches snapshot for outline variant 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderColor": "#457B9D",
+      "borderRadius": 8,
+      "borderWidth": 2,
+      "justifyContent": "center",
+      "minHeight": 48,
+      "opacity": 1,
+      "paddingHorizontal": 24,
+      "paddingVertical": 16,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "fontFamily": "InterTight_600SemiBold",
+          "fontSize": 16,
+        },
+        {
+          "color": "#457B9D",
+        },
+      ]
+    }
+  >
+    Outline Button
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components Button matches snapshot for primary variant 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#457B9D",
+      "borderRadius": 8,
+      "justifyContent": "center",
+      "minHeight": 48,
+      "opacity": 1,
+      "paddingHorizontal": 24,
+      "paddingVertical": 16,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "fontFamily": "InterTight_600SemiBold",
+          "fontSize": 16,
+        },
+        {
+          "color": "#FFFFFF",
+        },
+      ]
+    }
+  >
+    Primary Button
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components Button matches snapshot for secondary variant 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#DDF3FF",
+      "borderRadius": 8,
+      "justifyContent": "center",
+      "minHeight": 48,
+      "opacity": 1,
+      "paddingHorizontal": 24,
+      "paddingVertical": 16,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "fontFamily": "InterTight_600SemiBold",
+          "fontSize": 16,
+        },
+        {
+          "color": "#1D3557",
+        },
+      ]
+    }
+  >
+    Secondary Button
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components Card matches snapshot for basic card 1`] = `
+<View
+  activeOpacity={1}
+  style={
+    [
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 12,
+        "elevation": 3,
+        "marginBottom": 16,
+        "padding": 16,
+        "shadowColor": "#000",
+        "shadowOffset": {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 4,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text>
+    Card Content
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components Card matches snapshot for pressable card 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "backgroundColor": "#FFFFFF",
+      "borderRadius": 12,
+      "elevation": 3,
+      "marginBottom": 16,
+      "opacity": 1,
+      "padding": 16,
+      "shadowColor": "#000",
+      "shadowOffset": {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 0.1,
+      "shadowRadius": 4,
+    }
+  }
+>
+  <Text>
+    Pressable Card
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components EmptyState matches snapshot 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+      "padding": 32,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#1D3557",
+        "fontFamily": "InterTight_700Bold",
+        "fontSize": 24,
+        "marginBottom": 8,
+        "textAlign": "center",
+      }
+    }
+  >
+    No Items
+  </Text>
+  <Text
+    style={
+      {
+        "color": "#6C757D",
+        "fontFamily": "InterTight_400Regular",
+        "fontSize": 16,
+        "textAlign": "center",
+      }
+    }
+  >
+    There are no items to display
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components Input matches snapshot for basic input 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 16,
+    }
+  }
+>
+  <TextInput
+    autoCapitalize="none"
+    keyboardType="default"
+    onChangeText={[Function]}
+    placeholder="Enter text"
+    placeholderTextColor="#6C757D"
+    secureTextEntry={false}
+    style={
+      [
+        {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#DEE2E6",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "color": "#1D3557",
+          "fontFamily": "InterTight_400Regular",
+          "fontSize": 16,
+          "padding": 16,
+        },
+        undefined,
+      ]
+    }
+    value=""
+  />
+</View>
+`;
+
+exports[`Snapshots: UI Components Input matches snapshot with error 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 16,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#1D3557",
+        "fontFamily": "InterTight_600SemiBold",
+        "fontSize": 14,
+        "marginBottom": 4,
+      }
+    }
+  >
+    Email
+  </Text>
+  <TextInput
+    autoCapitalize="none"
+    keyboardType="default"
+    onChangeText={[Function]}
+    placeholderTextColor="#6C757D"
+    secureTextEntry={false}
+    style={
+      [
+        {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#DEE2E6",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "color": "#1D3557",
+          "fontFamily": "InterTight_400Regular",
+          "fontSize": 16,
+          "padding": 16,
+        },
+        {
+          "borderColor": "#EF476F",
+        },
+      ]
+    }
+    value=""
+  />
+  <Text
+    style={
+      {
+        "color": "#EF476F",
+        "fontFamily": "InterTight_400Regular",
+        "fontSize": 14,
+        "marginTop": 4,
+      }
+    }
+  >
+    Invalid email
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components Input matches snapshot with label 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 16,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#1D3557",
+        "fontFamily": "InterTight_600SemiBold",
+        "fontSize": 14,
+        "marginBottom": 4,
+      }
+    }
+  >
+    Email
+  </Text>
+  <TextInput
+    autoCapitalize="none"
+    keyboardType="default"
+    onChangeText={[Function]}
+    placeholder="Enter email"
+    placeholderTextColor="#6C757D"
+    secureTextEntry={false}
+    style={
+      [
+        {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#DEE2E6",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "color": "#1D3557",
+          "fontFamily": "InterTight_400Regular",
+          "fontSize": 16,
+          "padding": 16,
+        },
+        undefined,
+      ]
+    }
+    value=""
+  />
+</View>
+`;
+
+exports[`Snapshots: UI Components Input matches snapshot with value 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 16,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#1D3557",
+        "fontFamily": "InterTight_600SemiBold",
+        "fontSize": 14,
+        "marginBottom": 4,
+      }
+    }
+  >
+    Email
+  </Text>
+  <TextInput
+    autoCapitalize="none"
+    keyboardType="default"
+    onChangeText={[Function]}
+    placeholderTextColor="#6C757D"
+    secureTextEntry={false}
+    style={
+      [
+        {
+          "backgroundColor": "#FFFFFF",
+          "borderColor": "#DEE2E6",
+          "borderRadius": 8,
+          "borderWidth": 1,
+          "color": "#1D3557",
+          "fontFamily": "InterTight_400Regular",
+          "fontSize": 16,
+          "padding": 16,
+        },
+        undefined,
+      ]
+    }
+    value="test@example.com"
+  />
+</View>
+`;
+
+exports[`Snapshots: UI Components LoadingSpinner matches snapshot for default size 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <ActivityIndicator
+    color="#457B9D"
+    size="large"
+  />
+</View>
+`;
+
+exports[`Snapshots: UI Components LoadingSpinner matches snapshot for small size 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <ActivityIndicator
+    color="#457B9D"
+    size="small"
+  />
+</View>
+`;
+
+exports[`Snapshots: UI Components RootButton matches snapshot for default state 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#DEE2E6",
+      "borderRadius": 8,
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "opacity": 1,
+      "paddingHorizontal": 8,
+      "paddingVertical": 4,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#1D3557",
+          "fontFamily": "InterTight_700Bold",
+          "fontSize": 20,
+        },
+        false,
+      ]
+    }
+  >
+    √
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components RootButton matches snapshot for rooted state 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#457B9D",
+      "borderColor": "#457B9D",
+      "borderRadius": 8,
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "opacity": 1,
+      "paddingHorizontal": 8,
+      "paddingVertical": 4,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#1D3557",
+          "fontFamily": "InterTight_700Bold",
+          "fontSize": 20,
+        },
+        {
+          "color": "#FFFFFF",
+        },
+      ]
+    }
+  >
+    √
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#1D3557",
+          "fontFamily": "InterTight_600SemiBold",
+          "fontSize": 14,
+          "marginLeft": 4,
+        },
+        {
+          "color": "#FFFFFF",
+        },
+      ]
+    }
+  >
+    5
+  </Text>
+</View>
+`;
+
+exports[`Snapshots: UI Components RootButton matches snapshot with high count 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#DEE2E6",
+      "borderRadius": 8,
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "opacity": 1,
+      "paddingHorizontal": 8,
+      "paddingVertical": 4,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#1D3557",
+          "fontFamily": "InterTight_700Bold",
+          "fontSize": 20,
+        },
+        false,
+      ]
+    }
+  >
+    √
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#1D3557",
+          "fontFamily": "InterTight_600SemiBold",
+          "fontSize": 14,
+          "marginLeft": 4,
+        },
+        false,
+      ]
+    }
+  >
+    999
+  </Text>
+</View>
+`;
