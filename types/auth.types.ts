@@ -6,6 +6,7 @@ export interface User {
   username: string;
   profilePictureUrl?: string;
   isGuest: boolean;
+  isComposer: boolean;
   createdAt: string;
 }
 

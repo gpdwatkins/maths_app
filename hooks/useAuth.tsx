@@ -3,6 +3,7 @@
 import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
 import { supabase } from '@/services/supabase';
 import { authService } from '@/services/auth.service';
+import { composerService } from '@/services/composer.service';
 import { User } from '@/types/auth.types';
 
 interface AuthContextType {
@@ -12,6 +13,7 @@ interface AuthContextType {
   signUp: (email: string, password: string, username: string) => Promise<void>;
   signOut: () => Promise<void>;
   continueAsGuest: () => Promise<void>;
+  becomeComposer: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -72,8 +74,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(guestUser);
   };
 
+  const becomeComposer = async () => {
+    if (!user || user.isGuest) {
+      throw new Error('Must be signed in to become a composer');
+    }
+    await composerService.becomeComposer(user.id);
+    setUser({ ...user, isComposer: true });
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, signIn, signUp, signOut, continueAsGuest }}>
+    <AuthContext.Provider value={{ user, loading, signIn, signUp, signOut, continueAsGuest, becomeComposer }}>
       {children}
     </AuthContext.Provider>
   );

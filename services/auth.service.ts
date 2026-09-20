@@ -19,7 +19,7 @@ function toFriendlyAuthError(error: Error): Error {
 async function fetchUserProfile(authUserId: string, authEmail: string, authCreatedAt: string): Promise<User> {
   const { data: profile, error } = await supabase
     .from('users')
-    .select('id, email, username, profile_picture_url, is_guest, created_at')
+    .select('id, email, username, profile_picture_url, is_guest, is_composer, created_at')
     .eq('id', authUserId)
     .single();
 
@@ -30,6 +30,7 @@ async function fetchUserProfile(authUserId: string, authEmail: string, authCreat
       email: authEmail,
       username: authEmail.split('@')[0],
       isGuest: false,
+      isComposer: false,
       createdAt: authCreatedAt,
     };
   }
@@ -40,6 +41,7 @@ async function fetchUserProfile(authUserId: string, authEmail: string, authCreat
     username: profile.username,
     profilePictureUrl: profile.profile_picture_url,
     isGuest: profile.is_guest,
+    isComposer: profile.is_composer ?? false,
     createdAt: profile.created_at,
   };
 }
@@ -118,6 +120,7 @@ export const authService = {
       email: authUser.email!,
       username: credentials.username,
       isGuest: false,
+      isComposer: false,
       createdAt: authUser.created_at,
     };
   },
@@ -151,6 +154,7 @@ export const authService = {
       email: 'guest@puzzles.app',
       username: 'Guest',
       isGuest: true,
+      isComposer: false,
       createdAt: new Date().toISOString(),
     };
   },

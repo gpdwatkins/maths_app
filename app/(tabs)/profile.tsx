@@ -4,9 +4,11 @@ import { View, ScrollView, StyleSheet, Alert } from 'react-native';
 import { useState, useEffect } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import { useAuth } from '@/hooks/useAuth';
+import { useComposer } from '@/hooks/useComposer';
 import { profileService } from '@/services/profile.service';
 import ProfileHeader from '@/components/profile/ProfileHeader';
 import StatsCard from '@/components/profile/StatsCard';
+import { ComposerStatsCard } from '@/components/composer';
 import Button from '@/components/ui/Button';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import WebContentContainer from '@/components/ui/WebContentContainer';
@@ -14,10 +16,14 @@ import { Profile } from '@/types/profile.types';
 import { COLORS, SPACING } from '@/utils/constants';
 
 export default function ProfileScreen() {
-  const { user, signOut } = useAuth();
+  const { user, signOut, becomeComposer } = useAuth();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
+  const [becomingComposer, setBecomingComposer] = useState(false);
+
+  // Only load composer data if user is a composer
+  const composerData = useComposer(user?.isComposer ? user.id : '');
 
   useEffect(() => {
     loadProfile();
@@ -78,6 +84,23 @@ export default function ProfileScreen() {
     }
   };
 
+  const handleBecomeComposer = async () => {
+    try {
+      setBecomingComposer(true);
+      await becomeComposer();
+      Alert.alert(
+        'Welcome, Composer!',
+        'You can now use the Composer page to create channels and add puzzles.'
+      );
+    } catch (error) {
+      console.error('Become composer error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Failed to become a composer';
+      Alert.alert('Error', errorMessage);
+    } finally {
+      setBecomingComposer(false);
+    }
+  };
+
   const handleSignOut = async () => {
     await signOut();
   };
@@ -114,6 +137,32 @@ export default function ProfileScreen() {
           <View style={styles.content}>
             <StatsCard stats={profile.stats} />
 
+            {/* Composer Section */}
+            {!user?.isGuest && (
+              <>
+                {user?.isComposer ? (
+                  // Show composer stats if already a composer
+                  composerData.stats && (
+                    <ComposerStatsCard
+                      stats={composerData.stats}
+                      channels={composerData.channels}
+                    />
+                  )
+                ) : (
+                  // Show become a composer button
+                  <View style={styles.composerSection}>
+                    <Button
+                      title="Become a Puzzle Composer"
+                      onPress={handleBecomeComposer}
+                      loading={becomingComposer}
+                      disabled={becomingComposer}
+                      fullWidth
+                    />
+                  </View>
+                )}
+              </>
+            )}
+
             {!user?.isGuest && (
               <View style={styles.actions}>
                 <Button
@@ -144,6 +193,9 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: SPACING.md,
+  },
+  composerSection: {
+    marginTop: SPACING.md,
   },
   actions: {
     marginTop: SPACING.lg,
