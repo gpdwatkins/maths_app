@@ -1,6 +1,6 @@
 // Login screen
 
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
 import EmailAuthForm from '@/components/auth/EmailAuthForm';
@@ -8,6 +8,13 @@ import OAuthButtons from '@/components/auth/OAuthButtons';
 import Button from '@/components/ui/Button';
 import { COLORS, SPACING, TYPOGRAPHY, FONTS } from '@/utils/constants';
 import { authService } from '@/services/auth.service';
+import { supabase } from '@/services/supabase';
+
+// Get the public URL for the logo from Supabase storage
+const getLogoUrl = () => {
+  const { data } = supabase.storage.from('branding').getPublicUrl('logos/top_banner_logo_light.png');
+  return data.publicUrl;
+};
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -29,10 +36,16 @@ export default function LoginScreen() {
     await continueAsGuest();
   };
 
+  const logoUrl = getLogoUrl();
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>Welcome Back</Text>
+        <Image
+          source={{ uri: logoUrl }}
+          style={styles.logo}
+          resizeMode="contain"
+        />
         <Text style={styles.subtitle}>Sign in to continue</Text>
 
         <EmailAuthForm mode="login" onSubmit={handleEmailLogin} />
@@ -76,11 +89,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: SPACING.lg,
   },
-  title: {
-    fontSize: TYPOGRAPHY.h1,
-    fontFamily: FONTS.bold,
-    color: COLORS.text,
-    marginBottom: SPACING.xs,
+  logo: {
+    height: 72,
+    width: 405,
+    marginBottom: SPACING.sm,
   },
   subtitle: {
     fontSize: TYPOGRAPHY.body,

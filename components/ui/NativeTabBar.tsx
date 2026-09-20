@@ -1,14 +1,16 @@
-// Custom tab bar component with centered content on web
+// Custom tab bar component for native platforms
+// Matches the styling of SubPageLayout's tab bar for consistency
 
-import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '@/hooks/useAuth';
 import { COLORS, FONTS, TYPOGRAPHY } from '@/utils/constants';
 
-const MAX_TABBAR_WIDTH = 900;
+const TAB_ICON_SIZE = 24;
 
-// Fallback tab configuration when descriptors are not available (e.g., in SubPageLayout)
+// Tab configuration matching SubPageLayout
 const TAB_CONFIG: Record<string, { label: string; icon: string }> = {
   index: { label: 'Home', icon: 'home' },
   puzzles: { label: 'Puzzles', icon: 'puzzle-piece' },
@@ -17,7 +19,8 @@ const TAB_CONFIG: Record<string, { label: string; icon: string }> = {
   profile: { label: 'Profile', icon: 'user-alt' },
 };
 
-export default function WebTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
+export default function NativeTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
+  const insets = useSafeAreaInsets();
   const { user } = useAuth();
 
   // Filter out routes that should be hidden
@@ -30,21 +33,13 @@ export default function WebTabBar({ state, descriptors, navigation }: BottomTabB
   });
 
   return (
-    <View style={styles.container}>
-      <View style={styles.innerContainer}>
+    <View style={[styles.tabBar, { paddingBottom: insets.bottom }]}>
+      <View style={styles.tabBarInner}>
         {visibleRoutes.map((route) => {
-          const descriptor = descriptors[route.key];
-          const options = descriptor?.options || {};
-          const fallback = TAB_CONFIG[route.name] || { label: route.name, icon: 'circle' };
+          const config = TAB_CONFIG[route.name] || { label: route.name, icon: 'circle' };
           const originalIndex = state.routes.findIndex(r => r.key === route.key);
-
-          const label = options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : fallback.label;
-
           const isFocused = state.index === originalIndex;
+          const color = isFocused ? COLORS.accent : COLORS.textLight;
 
           const onPress = () => {
             const event = navigation.emit({
@@ -58,38 +53,16 @@ export default function WebTabBar({ state, descriptors, navigation }: BottomTabB
             }
           };
 
-          const onLongPress = () => {
-            navigation.emit({
-              type: 'tabLongPress',
-              target: route.key,
-            });
-          };
-
-          const color = isFocused ? COLORS.accent : COLORS.textLight;
-
-          // Use provided icon or fallback to FontAwesome5 icon
-          const renderIcon = () => {
-            if (options.tabBarIcon) {
-              return options.tabBarIcon({ focused: isFocused, color, size: 24 });
-            }
-            return <FontAwesome5 name={fallback.icon} size={24} color={color} />;
-          };
-
           return (
             <TouchableOpacity
               key={route.key}
+              style={styles.tab}
+              onPress={onPress}
               accessibilityRole="button"
               accessibilityState={isFocused ? { selected: true } : {}}
-              accessibilityLabel={options.tabBarAccessibilityLabel}
-              testID={options.tabBarTestID}
-              onPress={onPress}
-              onLongPress={onLongPress}
-              style={styles.tab}
             >
-              {renderIcon()}
-              <Text style={[styles.label, { color }]}>
-                {typeof label === 'string' ? label : route.name}
-              </Text>
+              <FontAwesome5 name={config.icon} size={TAB_ICON_SIZE} color={color} />
+              <Text style={[styles.tabLabel, { color }]}>{config.label}</Text>
             </TouchableOpacity>
           );
         })}
@@ -99,16 +72,14 @@ export default function WebTabBar({ state, descriptors, navigation }: BottomTabB
 }
 
 const styles = StyleSheet.create({
-  container: {
+  tabBar: {
     backgroundColor: COLORS.primary,
-    borderTopWidth: Platform.OS === 'web' ? 1 : 0,
+    borderTopWidth: 1,
     borderTopColor: 'rgba(0, 0, 0, 0.1)',
   },
-  innerContainer: {
+  tabBarInner: {
     flexDirection: 'row',
-    maxWidth: Platform.OS === 'web' ? MAX_TABBAR_WIDTH : undefined,
     width: '100%',
-    alignSelf: 'center',
     height: 64,
     paddingTop: 8,
   },
@@ -117,7 +88,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  label: {
+  tabLabel: {
     fontSize: TYPOGRAPHY.tiny,
     fontFamily: FONTS.medium,
     marginTop: 2,

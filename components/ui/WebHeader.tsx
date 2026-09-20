@@ -4,15 +4,17 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, Platform } from 'react
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/services/supabase';
 import { COLORS, FONTS, TYPOGRAPHY, SPACING } from '@/utils/constants';
 
 const MAX_HEADER_WIDTH = 900;
-const LOGO_HEIGHT = 48;
+const LOGO_HEIGHT = 59;
 
 interface WebHeaderProps {
   showBackButton?: boolean;
+  includeSafeArea?: boolean;
 }
 
 // Get the public URL for the logo from Supabase storage
@@ -21,16 +23,24 @@ const getLogoUrl = () => {
   return data.publicUrl;
 };
 
-export default function WebHeader({ showBackButton = false }: WebHeaderProps) {
+export default function WebHeader({ showBackButton = false, includeSafeArea = false }: WebHeaderProps) {
   const router = useRouter();
   const { user, signOut } = useAuth();
   const [menuVisible, setMenuVisible] = useState(false);
   const menuRef = useRef<View>(null);
   const logoUrl = getLogoUrl();
+  const insets = useSafeAreaInsets();
+  const isWeb = Platform.OS === 'web';
 
   const handleSignOut = async () => {
     setMenuVisible(false);
-    await signOut();
+    try {
+      await signOut();
+      // Navigate to login after sign out
+      router.replace('/login');
+    } catch (error) {
+      console.error('Sign out error:', error);
+    }
   };
 
   const handleViewProfile = () => {
@@ -61,9 +71,13 @@ export default function WebHeader({ showBackButton = false }: WebHeaderProps) {
     router.back();
   };
 
-  if (Platform.OS !== 'web') {
+  const handleLogoPress = () => {
+    router.push('/(tabs)/');
+  };
+
+  if (!isWeb) {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, includeSafeArea && { paddingTop: insets.top }]}>
         <View style={styles.nativeInnerContainer}>
           <View style={styles.sideSection}>
             {showBackButton && (
@@ -73,13 +87,32 @@ export default function WebHeader({ showBackButton = false }: WebHeaderProps) {
             )}
           </View>
           <View style={styles.logoContainer}>
-            <Image
-              source={{ uri: logoUrl }}
-              style={styles.logo}
-              resizeMode="contain"
-            />
+            <TouchableOpacity onPress={handleLogoPress} activeOpacity={1}>
+              <Image
+                source={{ uri: logoUrl }}
+                style={styles.logo}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
           </View>
-          <View style={styles.sideSection} />
+          <View style={[styles.sideSection, styles.profileWrapper]}>
+            <TouchableOpacity
+              style={styles.profileButton}
+              onPress={handleViewProfile}
+              activeOpacity={1}
+            >
+              {user?.profilePictureUrl ? (
+                <Image
+                  source={{ uri: user.profilePictureUrl }}
+                  style={styles.profileImage}
+                />
+              ) : (
+                <View style={styles.profilePlaceholder}>
+                  <FontAwesome5 name="user" size={18} color="#9CA3AF" />
+                </View>
+              )}
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
@@ -97,17 +130,20 @@ export default function WebHeader({ showBackButton = false }: WebHeaderProps) {
         </View>
 
         <View style={styles.logoContainer}>
-          <Image
-            source={{ uri: logoUrl }}
-            style={styles.logo}
-            resizeMode="contain"
-          />
+          <TouchableOpacity onPress={handleLogoPress} activeOpacity={1}>
+            <Image
+              source={{ uri: logoUrl }}
+              style={styles.logo}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
         </View>
 
         <View style={[styles.sideSection, styles.profileWrapper]}>
           <TouchableOpacity
             style={styles.profileButton}
             onPress={() => setMenuVisible(!menuVisible)}
+            activeOpacity={1}
           >
             {user?.profilePictureUrl ? (
               <Image
@@ -123,7 +159,14 @@ export default function WebHeader({ showBackButton = false }: WebHeaderProps) {
           </TouchableOpacity>
 
           {menuVisible && (
-            <View ref={menuRef} style={styles.menuContainer}>
+            <View
+              ref={menuRef}
+              style={styles.menuContainer}
+              // Stop propagation to prevent click-outside handler from closing menu before action completes
+              onStartShouldSetResponder={() => true}
+              onTouchEnd={(e) => e.stopPropagation()}
+              {...(Platform.OS === 'web' ? { onClick: (e: any) => e.stopPropagation() } : {})}
+            >
               <TouchableOpacity style={styles.menuItem} onPress={handleViewProfile}>
                 <FontAwesome5 name="user" size={16} color={COLORS.text} />
                 <Text style={styles.menuItemText}>View Profile</Text>
@@ -178,7 +221,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     height: LOGO_HEIGHT,
-    width: 270,
+    width: 238,
   },
   profileWrapper: {
     position: 'relative',
